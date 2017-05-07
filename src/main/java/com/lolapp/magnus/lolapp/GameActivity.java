@@ -101,6 +101,7 @@ public class GameActivity extends AppCompatActivity {
         skipChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 champText.setText("");
                 try {
                     Toast.makeText(getApplicationContext(), "Finder næste champion...", Toast.LENGTH_SHORT).show();
@@ -110,6 +111,8 @@ public class GameActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                */
+                guessChamp.callOnClick();
             }
         });
     }
