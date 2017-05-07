@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lolapp.magnus.lolapp.LobbyActivity">
+
+
+    <TextView
+        android:id="@+id/waitText"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:text="Awaiting start..."
+        android:layout_centerHorizontal="true"
+        android:paddingTop="25dp"
+        android:textSize="30dp"
+
+        />
+
+    <ScrollView
+        android:id="@+id/scrollText"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/waitText"
+        android:paddingTop="25dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/playersText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp" />
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/startGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:layout_below="@+id/scrollText"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
