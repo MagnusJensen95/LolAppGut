@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nyt Spil"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
         />
 
@@ -19,8 +20,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find Spil"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/createGameButton"
         android:layout_centerHorizontal="true"
          />
+
+    <Button
+        android:id="@+id/showScoresButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Se Tidligere Scores"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/joinGameButton"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

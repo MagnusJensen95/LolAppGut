@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static android.R.attr.bitmap;
 
@@ -166,11 +167,21 @@ public class GameActivity extends AppCompatActivity {
         boolean done = connection.playerDoneGuessing(key, username);
        // Toast.makeText(getApplicationContext(), "Not done (not in if)", Toast.LENGTH_SHORT).show();
         if(done){
-            Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+
+            long millis = connection.getTimeTaken(key, username);
+            String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
+                    TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+                    TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+            //Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
             String doneText = "";
             doneText += "Game Over! \n";
             doneText += ("Score : "+ connection.getScore(key, username) + "\n");
-            doneText += ("Time : "+ connection.getTimeTaken(key, username));
+            doneText += ("Time : "+ hms);
+
+
+
+
+
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(GameActivity.this);
             dialog.setMessage(doneText);

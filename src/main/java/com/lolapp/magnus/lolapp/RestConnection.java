@@ -86,6 +86,31 @@ public class RestConnection {
         return responseValue;
     }
 
+    public String findplayersgames(String username) throws InterruptedException {
+
+        request = new Request.Builder().url(baseURL + "/getplayersgames" + "/" + username).build();
+
+        call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                latch.countDown();
+                return;
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                responseValue = response.body().string();
+                latch.countDown();
+            }
+        });
+
+
+        latch.await();
+        latch = new CountDownLatch(1);
+        return responseValue;
+    }
+
     public boolean hentBruger(String username, String password) throws InterruptedException {
 
         request = new Request.Builder().url(baseURL + "/hentbruger/" +password+"/"+username).build();
@@ -428,6 +453,34 @@ public class RestConnection {
         latch = new CountDownLatch(1);
 
         return time;
+
+    }
+
+    public String getWinner(String gameKey)  throws InterruptedException{
+        request = new Request.Builder().url(baseURL + "/getwinner/" +gameKey).build();
+
+
+        call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                latch.countDown();
+                return;
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                responseValue = response.body().string();
+
+                latch.countDown();
+            }
+        });
+
+        latch.await();
+        latch = new CountDownLatch(1);
+
+        return responseValue;
 
     }
 }

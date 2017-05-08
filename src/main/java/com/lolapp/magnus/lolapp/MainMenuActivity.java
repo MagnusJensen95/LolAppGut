@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    private Button createGameButton, joinGameButton;
+    private Button createGameButton, joinGameButton, scoresButton;
     private String username;
 
 
@@ -44,8 +44,15 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-
-
+        scoresButton = (Button) findViewById(R.id.showScoresButton);
+        scoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ScoresActivity.class);
+                i.putExtra("Brugernavn", username);
+                startActivity(i);
+            }
+        });
 
 
     }

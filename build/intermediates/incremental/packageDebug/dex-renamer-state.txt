@@ -1,4 +1,4 @@
-#Mon May 08 13:40:22 CEST 2017
+#Mon May 08 14:45:48 CEST 2017
 base.0=C\:\\Users\\Magnus\\AndroidStudioProjects\\LolApp2\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_bfb7260e7854b7d0a239ef3a059b7c2e891383cd
 renamed.1=classes2.dex
 renamed.0=classes.dex

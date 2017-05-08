@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class LobbyActivity extends AppCompatActivity {
 
-    private TextView playersText;
+    private TextView playersText, waitText;
     private Button startGameButton;
 
     private RestConnection connection;
@@ -88,7 +88,8 @@ public class LobbyActivity extends AppCompatActivity {
 
             }.execute();
 
-
+            waitText = (TextView) findViewById(R.id.waitText);
+            waitText.setText(waitText.getText() + "\n" + key);
         }
 
         //Joined game
@@ -119,25 +120,25 @@ public class LobbyActivity extends AppCompatActivity {
                                 }
                             });
                             count++;
+                            try {
+                                if (connection.isGameStarted(username)) {
+                                    Intent i = new Intent(getApplicationContext(), GameActivity.class);
+                                    i.putExtra("gameKey", key);
+                                    i.putExtra("Brugernavn", username);
+                                    startActivity(i);
+                                    task.cancel(true);
 
+
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 
                     }
-                    try {
-                        if(connection.isGameStarted(username)){
-                            Intent i = new Intent(getApplicationContext(), GameActivity.class);
-                            i.putExtra("gameKey", key);
-                            i.putExtra("Brugernavn", username);
-                            startActivity(i);
-                            task.cancel(true);
 
-
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     return null;
                 }
 
